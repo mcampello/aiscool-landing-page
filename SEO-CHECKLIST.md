@@ -69,19 +69,17 @@
 
 **Onde colocar:** `/og-image.png` na raiz
 
-### 2. Google Analytics
-**Quando tiver o ID (G-XXXXXXXXXX), adicionar antes de `</head>`:**
+### 2. ✅ Microsoft Clarity (Implementado)
+**Projeto ID:** tq9flk08lr
+**Dashboard:** https://clarity.microsoft.com/projects/view/tq9flk08lr
 
-```html
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
-</script>
-```
+**O que o Clarity faz:**
+- 🎥 Gravações de sessões
+- 🔥 Heatmaps de cliques
+- 📊 Análise de comportamento
+- 🚀 100% gratuito
+
+**Status:** ✅ Script instalado e funcionando
 
 ### 3. Google Search Console
 1. Acesse: https://search.google.com/search-console
