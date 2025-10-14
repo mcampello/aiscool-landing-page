@@ -1,0 +1,12 @@
+# robots.txt para AI's Cool Consulting
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /tests/
+
+# Sitemap
+Sitemap: https://ais.cool/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
