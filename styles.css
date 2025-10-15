@@ -260,7 +260,7 @@ body {
     color: var(--text-muted);
 }
 
-/* Efeito de sol se pondo no horizonte */
+/* Efeito sutil de luz no horizonte */
 .lightings {
     position: absolute;
     bottom: 0;
@@ -275,62 +275,63 @@ body {
 .lightings section {
     position: absolute;
     border-radius: 50%;
-    bottom: -200px;
+    bottom: -50px;
     left: 50%;
     transform: translateX(-50%);
+    filter: blur(20px);
 }
 
 #one {
-    width: 800px;
-    height: 400px;
-    background: radial-gradient(ellipse at center, rgba(255, 140, 0, 0.8) 0%, rgba(255, 69, 0, 0.6) 30%, rgba(255, 20, 147, 0.4) 60%, transparent 100%);
-    animation: sunset 8s ease-in-out infinite alternate;
+    width: 300px;
+    height: 150px;
+    background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.3) 0%, rgba(139, 92, 246, 0.1) 50%, transparent 100%);
+    animation: subtleGlow 6s ease-in-out infinite alternate;
 }
 
 #two {
-    width: 1000px;
-    height: 500px;
-    background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.6) 0%, rgba(255, 140, 0, 0.4) 40%, rgba(255, 69, 0, 0.2) 70%, transparent 100%);
-    animation: sunset 10s ease-in-out infinite alternate;
+    width: 400px;
+    height: 200px;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.2) 0%, rgba(139, 92, 246, 0.1) 60%, transparent 100%);
+    animation: subtleGlow 8s ease-in-out infinite alternate;
     animation-delay: -2s;
 }
 
 #three {
-    width: 1200px;
-    height: 600px;
-    background: radial-gradient(ellipse at center, rgba(255, 255, 0, 0.4) 0%, rgba(255, 215, 0, 0.3) 50%, rgba(255, 140, 0, 0.1) 80%, transparent 100%);
-    animation: sunset 12s ease-in-out infinite alternate;
+    width: 500px;
+    height: 250px;
+    background: radial-gradient(ellipse at center, rgba(16, 185, 129, 0.2) 0%, rgba(139, 92, 246, 0.05) 70%, transparent 100%);
+    animation: subtleGlow 10s ease-in-out infinite alternate;
     animation-delay: -4s;
 }
 
 #four {
-    width: 1400px;
-    height: 700px;
-    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 0, 0.15) 60%, transparent 100%);
-    animation: sunset 14s ease-in-out infinite alternate;
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, rgba(139, 92, 246, 0.03) 80%, transparent 100%);
+    animation: subtleGlow 12s ease-in-out infinite alternate;
     animation-delay: -6s;
 }
 
 #five {
-    width: 1600px;
-    height: 800px;
-    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 0, 0.05) 70%, transparent 100%);
-    animation: sunset 16s ease-in-out infinite alternate;
+    width: 700px;
+    height: 350px;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.05) 0%, rgba(139, 92, 246, 0.02) 90%, transparent 100%);
+    animation: subtleGlow 14s ease-in-out infinite alternate;
     animation-delay: -8s;
 }
 
-@keyframes sunset {
+@keyframes subtleGlow {
     0% {
         transform: translateX(-50%) translateY(0px) scale(1);
-        opacity: 0.8;
+        opacity: 0.3;
     }
     50% {
-        transform: translateX(-50%) translateY(-20px) scale(1.1);
-        opacity: 1;
+        transform: translateX(-50%) translateY(-10px) scale(1.05);
+        opacity: 0.5;
     }
     100% {
-        transform: translateX(-50%) translateY(-40px) scale(1.2);
-        opacity: 0.9;
+        transform: translateX(-50%) translateY(-20px) scale(1.1);
+        opacity: 0.4;
     }
 }
 
