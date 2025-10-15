@@ -31,7 +31,39 @@ function changeQuestion(direction) {
         });
         
         if (!isValid) {
-            alert('Por favor, preencha todos os campos obrigatórios antes de continuar.');
+            // Destacar campos não preenchidos com borda vermelha
+            inputs.forEach(input => {
+                if (input.type === 'radio') {
+                    const radioGroup = currentBlock.querySelectorAll(`input[name="${input.name}"]`);
+                    const isChecked = Array.from(radioGroup).some(radio => radio.checked);
+                    if (!isChecked) {
+                        radioGroup.forEach(radio => {
+                            radio.style.border = '2px solid #ef4444';
+                            radio.style.borderRadius = '4px';
+                        });
+                    }
+                } else if (input.type === 'text' || input.type === 'email' || input.type === 'tel') {
+                    if (!input.value.trim()) {
+                        input.style.border = '2px solid #ef4444';
+                    }
+                }
+            });
+            
+            // Remover bordas vermelhas após 3 segundos
+            setTimeout(() => {
+                inputs.forEach(input => {
+                    if (input.type === 'radio') {
+                        const radioGroup = currentBlock.querySelectorAll(`input[name="${input.name}"]`);
+                        radioGroup.forEach(radio => {
+                            radio.style.border = '';
+                            radio.style.borderRadius = '';
+                        });
+                    } else {
+                        input.style.border = '';
+                    }
+                });
+            }, 3000);
+            
             return;
         }
     }
@@ -54,9 +86,9 @@ function changeQuestion(direction) {
     }
     
     // Scroll para o topo do formulário
-    const quizContainer = document.querySelector('.quiz-container');
-    if (quizContainer) {
-        quizContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const quizSection = document.getElementById('quiz');
+    if (quizSection) {
+        quizSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     
     // Atualizar barra de progresso
@@ -308,7 +340,27 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('currentQuestion').textContent = currentQuestionIndex;
     document.getElementById('totalQuestions').textContent = totalQuestions;
     
-    
+    // Máscara para WhatsApp
+    const whatsappField = document.querySelector('input[name="whatsapp"]');
+    if (whatsappField) {
+        whatsappField.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, ''); // Remove tudo que não é dígito
+            
+            if (value.length > 0) {
+                if (value.length <= 2) {
+                    value = `(${value}`;
+                } else if (value.length <= 7) {
+                    value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+                } else if (value.length <= 11) {
+                    value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
+                } else {
+                    value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7, 11)}`;
+                }
+            }
+            
+            e.target.value = value;
+        });
+    }
 });
 
 
