@@ -260,90 +260,77 @@ body {
     color: var(--text-muted);
 }
 
-/* Luzes animadas */
+/* Efeito de sol se pondo no horizonte */
 .lightings {
     position: absolute;
-    bottom: -60px;
+    bottom: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     pointer-events: none;
     z-index: 1;
+    overflow: hidden;
 }
 
 .lightings section {
+    position: absolute;
     border-radius: 50%;
-    height: 20px;
-    width: 100%;
-    position: relative;
-    margin: auto;
+    bottom: -200px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #one {
-    animation: one 5s ease-in-out infinite alternate;
+    width: 800px;
+    height: 400px;
+    background: radial-gradient(ellipse at center, rgba(255, 140, 0, 0.8) 0%, rgba(255, 69, 0, 0.6) 30%, rgba(255, 20, 147, 0.4) 60%, transparent 100%);
+    animation: sunset 8s ease-in-out infinite alternate;
 }
 
 #two {
-    width: 90%;
-    animation: two 4s ease-in-out infinite alternate;
+    width: 1000px;
+    height: 500px;
+    background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.6) 0%, rgba(255, 140, 0, 0.4) 40%, rgba(255, 69, 0, 0.2) 70%, transparent 100%);
+    animation: sunset 10s ease-in-out infinite alternate;
+    animation-delay: -2s;
 }
 
 #three {
-    width: 80%;
-    animation: three 3s ease-in-out infinite alternate;
+    width: 1200px;
+    height: 600px;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 0, 0.4) 0%, rgba(255, 215, 0, 0.3) 50%, rgba(255, 140, 0, 0.1) 80%, transparent 100%);
+    animation: sunset 12s ease-in-out infinite alternate;
+    animation-delay: -4s;
 }
 
 #four {
-    width: 70%;
-    animation: four 2s ease-in-out infinite alternate;
+    width: 1400px;
+    height: 700px;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 0, 0.15) 60%, transparent 100%);
+    animation: sunset 14s ease-in-out infinite alternate;
+    animation-delay: -6s;
 }
 
 #five {
-    width: 60%;
-    animation: five 1s ease-in-out infinite alternate;
+    width: 1600px;
+    height: 800px;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 0, 0.05) 70%, transparent 100%);
+    animation: sunset 16s ease-in-out infinite alternate;
+    animation-delay: -8s;
 }
 
-@keyframes one {
-    from {
-        box-shadow: 0 0 250px 20px #473C78;
+@keyframes sunset {
+    0% {
+        transform: translateX(-50%) translateY(0px) scale(1);
+        opacity: 0.8;
     }
-    to {
-        box-shadow: 0 0 100px 15px #F72A3B;
+    50% {
+        transform: translateX(-50%) translateY(-20px) scale(1.1);
+        opacity: 1;
     }
-}
-
-@keyframes two {
-    from {
-        box-shadow: 0 0 250px 20px #18C499;
-    }
-    to {
-        box-shadow: 0 0 100px 15px #D8F05E;
-    }
-}
-
-@keyframes three {
-    from {
-        box-shadow: 0 0 250px 20px #FFDD00;
-    }
-    to {
-        box-shadow: 0 0 100px 15px #3E33FF;
-    }
-}
-
-@keyframes four {
-    from {
-        box-shadow: 0 0 250px 20px #781848;
-    }
-    to {
-        box-shadow: 0 0 100px 15px #F2BBE9;
-    }
-}
-
-@keyframes five {
-    from {
-        box-shadow: 0 0 250px 20px #42F2A1;
-    }
-    to {
-        box-shadow: 0 0 100px 15px #F4F6AD;
+    100% {
+        transform: translateX(-50%) translateY(-40px) scale(1.2);
+        opacity: 0.9;
     }
 }
 
