@@ -260,53 +260,90 @@ body {
     color: var(--text-muted);
 }
 
-/* Partículas animadas */
-.particles-container {
+/* Luzes animadas */
+.lightings {
     position: absolute;
-    top: 0;
-    left: 0;
+    bottom: -60px;
     width: 100%;
     height: 100%;
     pointer-events: none;
     z-index: 1;
 }
 
-.particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: linear-gradient(45deg, var(--primary-purple), var(--accent-green));
+.lightings section {
     border-radius: 50%;
-    animation: float 6s ease-in-out infinite;
-    opacity: 0.7;
+    height: 20px;
+    width: 100%;
+    position: relative;
+    margin: auto;
 }
 
-.particle:nth-child(odd) {
-    animation-delay: -2s;
-    animation-duration: 8s;
+#one {
+    animation: one 5s ease-in-out infinite alternate;
 }
 
-.particle:nth-child(even) {
-    animation-delay: -4s;
-    animation-duration: 10s;
+#two {
+    width: 90%;
+    animation: two 4s ease-in-out infinite alternate;
 }
 
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px) translateX(0px) rotate(0deg);
-        opacity: 0.7;
+#three {
+    width: 80%;
+    animation: three 3s ease-in-out infinite alternate;
+}
+
+#four {
+    width: 70%;
+    animation: four 2s ease-in-out infinite alternate;
+}
+
+#five {
+    width: 60%;
+    animation: five 1s ease-in-out infinite alternate;
+}
+
+@keyframes one {
+    from {
+        box-shadow: 0 0 250px 20px #473C78;
     }
-    25% {
-        transform: translateY(-20px) translateX(10px) rotate(90deg);
-        opacity: 1;
+    to {
+        box-shadow: 0 0 100px 15px #F72A3B;
     }
-    50% {
-        transform: translateY(-40px) translateX(-10px) rotate(180deg);
-        opacity: 0.8;
+}
+
+@keyframes two {
+    from {
+        box-shadow: 0 0 250px 20px #18C499;
     }
-    75% {
-        transform: translateY(-20px) translateX(5px) rotate(270deg);
-        opacity: 0.9;
+    to {
+        box-shadow: 0 0 100px 15px #D8F05E;
+    }
+}
+
+@keyframes three {
+    from {
+        box-shadow: 0 0 250px 20px #FFDD00;
+    }
+    to {
+        box-shadow: 0 0 100px 15px #3E33FF;
+    }
+}
+
+@keyframes four {
+    from {
+        box-shadow: 0 0 250px 20px #781848;
+    }
+    to {
+        box-shadow: 0 0 100px 15px #F2BBE9;
+    }
+}
+
+@keyframes five {
+    from {
+        box-shadow: 0 0 250px 20px #42F2A1;
+    }
+    to {
+        box-shadow: 0 0 100px 15px #F4F6AD;
     }
 }
 
