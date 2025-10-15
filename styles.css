@@ -456,8 +456,8 @@ body {
 .quiz-modal-content {
     background: var(--bg-card);
     border-radius: 20px;
-    padding: 40px;
-    max-width: 600px;
+    padding: 60px;
+    max-width: 800px;
     width: 90%;
     max-height: 80vh;
     overflow-y: auto;
@@ -530,6 +530,31 @@ body {
 .quiz-modal-close:hover {
     background: rgba(255, 255, 255, 0.2);
     transform: scale(1.1);
+}
+
+/* Manter estilo original dos botões do quiz */
+.quiz-modal .quiz-navigation button {
+    background: linear-gradient(135deg, var(--primary-purple) 0%, var(--dark-purple) 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.quiz-modal .quiz-navigation button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+}
+
+.quiz-modal .quiz-navigation button:disabled {
+    background: var(--text-muted);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
 }
 
 /* Quando modal está ativo, esconder scroll da página */
