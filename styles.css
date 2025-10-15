@@ -418,27 +418,27 @@ body {
         box-shadow: 0 0 18px rgba(255, 255, 255, 1), 0 0 30px rgba(139, 92, 246, 0.5);
     }
     68% {
-        transform: translateY(-68px) translateX(calc(var(--drift, 0px) * 0.8)) scale(0.9);
+        transform: translateY(-120px) translateX(calc(var(--drift, 0px) * 0.8)) scale(0.9);
         opacity: 0.9;
         box-shadow: 0 0 16px rgba(255, 255, 255, 0.9), 0 0 28px rgba(139, 92, 246, 0.4);
     }
     82% {
-        transform: translateY(-82px) translateX(calc(var(--drift, 0px) * 0.9)) scale(0.7);
+        transform: translateY(-180px) translateX(calc(var(--drift, 0px) * 0.9)) scale(0.7);
         opacity: 0.7;
         box-shadow: 0 0 12px rgba(255, 255, 255, 0.7), 0 0 22px rgba(139, 92, 246, 0.3);
     }
     92% {
-        transform: translateY(-92px) translateX(var(--drift, 0px)) scale(0.4);
+        transform: translateY(-240px) translateX(var(--drift, 0px)) scale(0.4);
         opacity: 0.4;
         box-shadow: 0 0 8px rgba(255, 255, 255, 0.4), 0 0 15px rgba(139, 92, 246, 0.2);
     }
     98% {
-        transform: translateY(-98px) translateX(var(--drift, 0px)) scale(0.2);
+        transform: translateY(-270px) translateX(var(--drift, 0px)) scale(0.2);
         opacity: 0.2;
         box-shadow: 0 0 4px rgba(255, 255, 255, 0.2), 0 0 8px rgba(139, 92, 246, 0.1);
     }
     100% {
-        transform: translateY(-100px) translateX(var(--drift, 0px)) scale(0.1);
+        transform: translateY(-300px) translateX(var(--drift, 0px)) scale(0.1);
         opacity: 0;
         box-shadow: 0 0 2px rgba(255, 255, 255, 0.1);
     }
