@@ -135,45 +135,10 @@ function calculateScore(formData) {
 
 // Função para gerar insights personalizados
 function generateInsights(formData, score) {
-    const insights = [];
-    
-    // Insight 1: Baseado no resultado desejado
-    const resultadoDesejado = formData.get('q7');
-    let insight1 = '';
-    if (resultadoDesejado === 'reduzir_tempo') {
-        insight1 = '🎯 <strong>Seu foco principal é reduzir o tempo de processamento.</strong> Identificamos que sua maior oportunidade está na automação de fluxos de trabalho repetitivos, que pode liberar até 30% do tempo da sua equipe.';
-    } else if (resultadoDesejado === 'precisao_consultas') {
-        insight1 = '🎯 <strong>Você busca melhorar a precisão e velocidade das consultas.</strong> A implementação de um sistema de acesso inteligente a dados pode reduzir em até 80% o tempo gasto em pesquisas manuais.';
-    } else {
-        insight1 = '🎯 <strong>Você quer automatizar o atendimento via WhatsApp.</strong> Um agente conversacional bem implementado pode resolver até 70% das dúvidas dos clientes automaticamente, liberando sua equipe para casos mais complexos.';
-    }
-    insights.push(insight1);
-    
-    // Insight 2: Baseado no obstáculo
-    const obstaculo = formData.get('q8');
-    let insight2 = '';
-    if (obstaculo === 'tentativas_falharam') {
-        insight2 = '⚠️ <strong>Você já tentou automação antes sem sucesso.</strong> Nossa análise mostra que 85% das falhas ocorrem por falta de mapeamento adequado dos processos. Começar com uma documentação clara é fundamental.';
-    } else if (obstaculo === 'falta_integracao') {
-        insight2 = '⚠️ <strong>A integração entre sistemas é seu maior desafio.</strong> Sistemas legados podem ser integrados através de APIs modernas e middleware, sem necessidade de substituição completa.';
-    } else {
-        insight2 = '⚠️ <strong>Você precisa de ajuda para priorizar processos.</strong> Recomendamos começar pelo processo com maior volume de repetição e menor complexidade de decisão - geralmente oferece o melhor ROI inicial.';
-    }
-    insights.push(insight2);
-    
-    // Insight 3: Baseado na pontuação e documentação
-    const documentacao = formData.get('q1');
-    let insight3 = '';
-    if (score >= 70) {
-        insight3 = '✅ <strong>Sua empresa tem uma base sólida para automação.</strong> Com pontuação de ' + score + '/100, você está pronto para implementar soluções avançadas de IA com alto potencial de sucesso.';
-    } else if (score >= 40) {
-        insight3 = '📊 <strong>Sua empresa tem potencial, mas precisa de preparação.</strong> Com pontuação de ' + score + '/100, recomendamos começar documentando e padronizando processos antes da automação completa.';
-    } else {
-        insight3 = '🔧 <strong>Há trabalho de base a ser feito.</strong> Com pontuação de ' + score + '/100, o primeiro passo é mapear e documentar seus processos atuais para criar uma fundação sólida.';
-    }
-    insights.push(insight3);
-    
-    return insights;
+    const content = getInsightsByScore(score);
+    return content.insights.map(insight => 
+        `${insight.icone} <strong>${insight.titulo}</strong> ${insight.descricao}`
+    );
 }
 
 // Função para gerar próximos passos
