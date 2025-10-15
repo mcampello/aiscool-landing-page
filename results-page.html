@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seus Resultados - AI's Cool</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-purple: #8b5cf6;
+            --primary-green: #10b981;
+            --dark-bg: #0a0a0a;
+            --card-bg: #111111;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --gradient-primary: linear-gradient(135deg, #8b5cf6 0%, #10b981 100%);
+            --gradient-glow: linear-gradient(135deg, #8b5cf6 0%, #10b981 50%, #8b5cf6 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+            padding: 2rem;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 50%, #0a0a0a 100%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 1200px;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: var(--primary-purple);
+            font-weight: 500;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% { filter: brightness(1); }
+            100% { filter: brightness(1.2); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .score-display {
+            background: var(--card-bg);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem auto;
+            max-width: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .score-display::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .score-number {
+            font-size: 4rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .score-label {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        /* Insights Section */
+        .insights-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .insight-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .insight-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .insight-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.1);
+        }
+
+        .insight-card:hover::before {
+            opacity: 1;
+        }
+
+        .insight-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .insight-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .insight-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--card-bg);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 24px;
+            padding: 4rem 2rem;
+            margin: 4rem auto;
+            max-width: 800px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .cta-highlight {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .cta-highlight h3 {
+            color: var(--primary-purple);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-highlight p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* Calendar Embed */
+        .calendar-container {
+            background: var(--card-bg);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            min-height: 600px;
+        }
+
+        .calendar-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 1rem;
+            }
+            
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .insights-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .insights-section {
+                padding: 2rem 1rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content fade-in">
+            <div class="hero-badge">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="8" cy="8" r="3" fill="currentColor"/>
+                </svg>
+                DIAGNÓSTICO COMPLETO
+            </div>
+            
+            <h1 class="hero-title">Seus Resultados de Automação</h1>
+            <p class="hero-subtitle">
+                Descobrimos oportunidades únicas para transformar sua empresa com inteligência artificial
+            </p>
+            
+            <div class="score-display">
+                <div class="score-number" id="scoreNumber">75</div>
+                <div class="score-label" id="scoreLabel">Empresa Pronta para Automação</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Insights Section -->
+    <section class="insights-section">
+        <h2 class="section-title">Seus 3 Principais Insights</h2>
+        
+        <div class="insights-grid">
+            <div class="insight-card slide-in-left">
+                <span class="insight-icon">🚀</span>
+                <h3 class="insight-title">Você está pronto para <strong>automação inteligente</strong></h3>
+                <p class="insight-description">
+                    Sua empresa tem uma base sólida. A implementação de IA pode gerar economia de 40-60% no tempo operacional.
+                </p>
+            </div>
+            
+            <div class="insight-card fade-in">
+                <span class="insight-icon">⚡</span>
+                <h3 class="insight-title">Foque em <strong>processos repetitivos</strong> primeiro</h3>
+                <p class="insight-description">
+                    Identificamos 3-5 processos que consomem mais tempo da sua equipe. Automatizá-los pode liberar 20+ horas semanais.
+                </p>
+            </div>
+            
+            <div class="insight-card slide-in-right">
+                <span class="insight-icon">🎯</span>
+                <h3 class="insight-title">ROI esperado: <strong>300-500%</strong> em 6 meses</h3>
+                <p class="insight-description">
+                    Com a automação adequada, você pode reduzir custos operacionais e aumentar a produtividade significativamente.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2 class="cta-title">Próximo Passo: Diagnóstico Gratuito</h2>
+        <p class="cta-description">
+            Vamos conversar sobre como implementar essas automações na sua empresa
+        </p>
+        
+        <div class="cta-highlight">
+            <h3>🎯 Consultoria Personalizada</h3>
+            <p>Agende uma conversa de 30 minutos para discutir sua estratégia de automação</p>
+        </div>
+        
+        <div class="calendar-container">
+            <h3 class="calendar-title">Escolha o melhor horário para você:</h3>
+            
+            <!-- Cal inline embed code begins -->
+            <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline-start"></div>
+            <script type="text/javascript">
+              (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+            Cal("init", "start", {origin:"https://app.cal.com"});
+
+              Cal.ns.start("inline", {
+                elementOrSelector:"#my-cal-inline-start",
+                config: {"layout":"month_view","theme":"dark"},
+                calLink: "campello/start",
+              });
+
+              Cal.ns.start("ui", {"theme":"dark","cssVarsPerTheme":{"light":{"cal-brand":"#5714a2"},"dark":{"cal-brand":"#cb88df"}},"hideEventTypeDetails":false,"layout":"month_view"});
+              </script>
+              <!-- Cal inline embed code ends -->
+        </div>
+    </section>
+
+    <script>
+        // Função para atualizar resultados baseado no score
+        function updateResults(score) {
+            const scoreNumber = document.getElementById('scoreNumber');
+            const scoreLabel = document.getElementById('scoreLabel');
+            
+            scoreNumber.textContent = score;
+            
+            if (score <= 30) {
+                scoreLabel.textContent = 'Quase lá, falta pouco';
+            } else if (score <= 60) {
+                scoreLabel.textContent = 'Empresa Pronta para Automação';
+            } else {
+                scoreLabel.textContent = 'Em Estágio Ideal para Automatizar';
+            }
+        }
+
+        // Obter score da URL ou localStorage
+        function getScoreFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const score = urlParams.get('score');
+            if (score) {
+                return parseInt(score);
+            }
+            return 75; // Default score
+        }
+
+        // Inicializar página
+        document.addEventListener('DOMContentLoaded', function() {
+            const score = getScoreFromURL();
+            updateResults(score);
+        });
+    </script>
+</body>
+</html>
