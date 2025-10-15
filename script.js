@@ -252,22 +252,9 @@ function displayResults(formData) {
         status = 'Oportunidade de crescimento! Vamos construir a base juntos.';
     }
     
-    // Atualizar DOM
-    document.getElementById('scoreNumber').textContent = score;
-    document.getElementById('scoreStatus').textContent = status;
-    
-    document.getElementById('insight1').innerHTML = insights[0];
-    document.getElementById('insight2').innerHTML = insights[1];
-    document.getElementById('insight3').innerHTML = insights[2];
-    
-    document.getElementById('nextSteps').innerHTML = nextSteps;
-    
-    // Esconder quiz e mostrar resultados
-    document.getElementById('quiz').style.display = 'none';
-    document.getElementById('results').style.display = 'block';
-    
-    // Rolar para resultados
-    document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+    // Redirecionar para página de resultados com score
+    const resultsUrl = `results-page.html?score=${score}&name=${encodeURIComponent(formData.get('nome') || '')}&email=${encodeURIComponent(formData.get('email') || '')}`;
+    window.location.href = resultsUrl;
     
     // Enviar dados ao webhook de forma assíncrona (não bloqueia a UX)
     sendToWebhook(formData, score);

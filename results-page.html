@@ -430,6 +430,7 @@
         </div>
     </section>
 
+    <script src="resultados-content.js"></script>
     <script>
         // Função para atualizar resultados baseado no score
         function updateResults(score) {
@@ -438,16 +439,47 @@
             
             scoreNumber.textContent = score;
             
-            if (score <= 30) {
-                scoreLabel.textContent = 'Quase lá, falta pouco';
-            } else if (score <= 60) {
-                scoreLabel.textContent = 'Empresa Pronta para Automação';
-            } else {
-                scoreLabel.textContent = 'Em Estágio Ideal para Automatizar';
-            }
+            // Usar conteúdo do arquivo resultados-content.js
+            const content = getInsightsByScore(score);
+            scoreLabel.textContent = content.mensagem;
+            
+            // Atualizar insights
+            updateInsights(content.insights);
+            
+            // Atualizar CTA
+            updateCTA(content.cta);
         }
 
-        // Obter score da URL ou localStorage
+        // Atualizar insights na página
+        function updateInsights(insights) {
+            const insightCards = document.querySelectorAll('.insight-card');
+            insightCards.forEach((card, index) => {
+                if (insights[index]) {
+                    const icon = card.querySelector('.insight-icon');
+                    const title = card.querySelector('.insight-title');
+                    const description = card.querySelector('.insight-description');
+                    
+                    icon.textContent = insights[index].icone;
+                    title.innerHTML = insights[index].titulo;
+                    description.textContent = insights[index].descricao;
+                }
+            });
+        }
+
+        // Atualizar CTA
+        function updateCTA(cta) {
+            const ctaTitle = document.querySelector('.cta-title');
+            const ctaDescription = document.querySelector('.cta-description');
+            const ctaHighlight = document.querySelector('.cta-highlight h3');
+            const ctaHighlightText = document.querySelector('.cta-highlight p');
+            
+            ctaTitle.textContent = cta.titulo;
+            ctaDescription.textContent = cta.descricao;
+            ctaHighlight.textContent = `🎯 ${cta.titulo}`;
+            ctaHighlightText.textContent = cta.descricao;
+        }
+
+        // Obter score da URL
         function getScoreFromURL() {
             const urlParams = new URLSearchParams(window.location.search);
             const score = urlParams.get('score');
@@ -457,9 +489,27 @@
             return 75; // Default score
         }
 
+        // Obter nome da URL
+        function getNameFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const name = urlParams.get('name');
+            if (name) {
+                return decodeURIComponent(name);
+            }
+            return '';
+        }
+
         // Inicializar página
         document.addEventListener('DOMContentLoaded', function() {
             const score = getScoreFromURL();
+            const name = getNameFromURL();
+            
+            // Personalizar saudação se nome disponível
+            if (name) {
+                const heroSubtitle = document.querySelector('.hero-subtitle');
+                heroSubtitle.textContent = `Olá ${name}! Descobrimos oportunidades únicas para transformar sua empresa com inteligência artificial`;
+            }
+            
             updateResults(score);
         });
     </script>
