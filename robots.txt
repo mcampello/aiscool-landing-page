@@ -3,6 +3,7 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /tests/
+Disallow: /configpage/
 
 # Sitemap
 Sitemap: https://ais.cool/sitemap.xml

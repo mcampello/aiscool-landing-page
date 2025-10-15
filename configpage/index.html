@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuração de Estilos - AI's Cool</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,700&family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .config-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .config-header {
+            background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .config-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .config-header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .config-content {
+            padding: 40px;
+        }
+
+        .config-section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #f8fafc;
+            border-radius: 15px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .config-section h2 {
+            color: #1e293b;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .config-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .config-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .config-item label {
+            display: block;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+
+        .config-item select,
+        .config-item input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+
+        .config-item select:focus,
+        .config-item input:focus {
+            outline: none;
+            border-color: #8B5CF6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+        .preview-section {
+            background: #0A0A0A;
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+
+        .preview-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #10B981;
+        }
+
+        .preview-hero {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .preview-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .preview-hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .preview-gradient-text {
+            background: linear-gradient(135deg, #8B5CF6 0%, #10B981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .preview-italic-text {
+            font-style: italic;
+            font-weight: 400;
+            color: #A3A3A3;
+            font-size: 0.85em;
+            letter-spacing: 0.01em;
+        }
+
+        .preview-description {
+            font-size: 1.1rem;
+            color: #A3A3A3;
+            margin-bottom: 30px;
+        }
+
+        .preview-button {
+            background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .preview-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #f1f5f9;
+            color: #475569;
+            border: 1px solid #e2e8f0;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .status-message {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-weight: 500;
+            display: none;
+        }
+
+        .status-success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+
+        .status-error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+
+        @media (max-width: 768px) {
+            .config-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .preview-hero-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="config-container">
+        <div class="config-header">
+            <h1>🎨 Configuração de Estilos</h1>
+            <p>Personalize fontes, cores e estilos da homepage</p>
+        </div>
+
+        <div class="config-content">
+            <!-- Status Message -->
+            <div id="statusMessage" class="status-message"></div>
+
+            <!-- Fontes -->
+            <div class="config-section">
+                <h2>🔤 Fontes</h2>
+                <div class="config-grid">
+                    <div class="config-item">
+                        <label for="heroFont">Fonte Principal (Título)</label>
+                        <select id="heroFont">
+                            <option value="Poppins">Poppins (Atual)</option>
+                            <option value="Inter">Inter</option>
+                            <option value="Roboto">Roboto</option>
+                            <option value="Open Sans">Open Sans</option>
+                        </select>
+                    </div>
+                    <div class="config-item">
+                        <label for="heroWeight">Peso da Fonte Principal</label>
+                        <select id="heroWeight">
+                            <option value="600">600 (Semi-bold)</option>
+                            <option value="700" selected>700 (Bold)</option>
+                            <option value="800">800 (Extra-bold)</option>
+                        </select>
+                    </div>
+                    <div class="config-item">
+                        <label for="italicFont">Fonte Itálica ("Com IA")</label>
+                        <select id="italicFont">
+                            <option value="Playfair Display" selected>Playfair Display (Atual)</option>
+                            <option value="Poppins">Poppins</option>
+                            <option value="Inter">Inter</option>
+                            <option value="Roboto">Roboto</option>
+                        </select>
+                    </div>
+                    <div class="config-item">
+                        <label for="italicWeight">Peso da Fonte Itálica</label>
+                        <select id="italicWeight">
+                            <option value="300">300 (Light)</option>
+                            <option value="400" selected>400 (Regular)</option>
+                            <option value="500">500 (Medium)</option>
+                        </select>
+                    </div>
+                    <div class="config-item">
+                        <label for="italicSize">Tamanho da Fonte Itálica</label>
+                        <input type="range" id="italicSize" min="0.7" max="1.2" step="0.05" value="0.85">
+                        <span id="italicSizeValue">0.85em</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cores -->
+            <div class="config-section">
+                <h2>🎨 Cores</h2>
+                <div class="config-grid">
+                    <div class="config-item">
+                        <label for="primaryColor">Cor Primária</label>
+                        <input type="color" id="primaryColor" value="#8B5CF6">
+                    </div>
+                    <div class="config-item">
+                        <label for="secondaryColor">Cor Secundária</label>
+                        <input type="color" id="secondaryColor" value="#10B981">
+                    </div>
+                    <div class="config-item">
+                        <label for="textPrimary">Cor do Texto Principal</label>
+                        <input type="color" id="textPrimary" value="#FFFFFF">
+                    </div>
+                    <div class="config-item">
+                        <label for="textSecondary">Cor do Texto Secundário</label>
+                        <input type="color" id="textSecondary" value="#A3A3A3">
+                    </div>
+                    <div class="config-item">
+                        <label for="italicColor">Cor do Texto Itálico</label>
+                        <input type="color" id="italicColor" value="#A3A3A3">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estilos -->
+            <div class="config-section">
+                <h2>✨ Estilos</h2>
+                <div class="config-grid">
+                    <div class="config-item">
+                        <label for="heroSize">Tamanho do Título Principal</label>
+                        <input type="range" id="heroSize" min="2" max="6" step="0.1" value="4.5">
+                        <span id="heroSizeValue">4.5rem</span>
+                    </div>
+                    <div class="config-item">
+                        <label for="letterSpacing">Espaçamento entre Letras</label>
+                        <input type="range" id="letterSpacing" min="-0.05" max="0.05" step="0.01" value="-0.02">
+                        <span id="letterSpacingValue">-0.02em</span>
+                    </div>
+                    <div class="config-item">
+                        <label for="lineHeight">Altura da Linha</label>
+                        <input type="range" id="lineHeight" min="0.8" max="1.5" step="0.1" value="1.1">
+                        <span id="lineHeightValue">1.1</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preview -->
+            <div class="preview-section">
+                <div class="preview-title">👁️ Preview em Tempo Real</div>
+                <div class="preview-hero">
+                    <div class="preview-badge">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="8" cy="8" r="3" fill="currentColor"/>
+                        </svg>
+                        PARCEIRO DE AUTOMAÇÃO COM IA DE NOVA GERAÇÃO
+                    </div>
+                    <h1 id="previewTitle" class="preview-hero-title">
+                        Automatize com Inteligência,<br>
+                        <span id="previewGradient" class="preview-gradient-text">Cresça Mais Rápido</span>
+                        <span id="previewItalic" class="preview-italic-text">Com IA</span>
+                    </h1>
+                    <p id="previewDescription" class="preview-description">
+                        A automação com IA ajuda empresas modernas a economizar tempo, reduzir erros e<br>
+                        melhorar a produtividade ao lidar com tarefas repetitivas com facilidade.
+                    </p>
+                    <button class="preview-button">Agendar Consultoria Gratuita</button>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="applyChanges()">💾 Aplicar Mudanças</button>
+                <button class="btn btn-secondary" onclick="resetToDefault()">🔄 Resetar</button>
+                <button class="btn btn-secondary" onclick="exportConfig()">📤 Exportar Config</button>
+                <button class="btn btn-secondary" onclick="importConfig()">📥 Importar Config</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configurações padrão
+        const defaultConfig = {
+            heroFont: 'Poppins',
+            heroWeight: '700',
+            italicFont: 'Playfair Display',
+            italicWeight: '400',
+            italicSize: 0.85,
+            primaryColor: '#8B5CF6',
+            secondaryColor: '#10B981',
+            textPrimary: '#FFFFFF',
+            textSecondary: '#A3A3A3',
+            italicColor: '#A3A3A3',
+            heroSize: 4.5,
+            letterSpacing: -0.02,
+            lineHeight: 1.1
+        };
+
+        // Carregar configurações salvas
+        function loadConfig() {
+            const saved = localStorage.getItem('aiscool-config');
+            if (saved) {
+                const config = JSON.parse(saved);
+                Object.keys(config).forEach(key => {
+                    const element = document.getElementById(key);
+                    if (element) {
+                        element.value = config[key];
+                        updatePreview();
+                    }
+                });
+            }
+        }
+
+        // Atualizar preview em tempo real
+        function updatePreview() {
+            const config = getCurrentConfig();
+            
+            // Aplicar estilos ao preview
+            const title = document.getElementById('previewTitle');
+            const gradient = document.getElementById('previewGradient');
+            const italic = document.getElementById('previewItalic');
+            const description = document.getElementById('previewDescription');
+            
+            // Título principal
+            title.style.fontFamily = `'${config.heroFont}', sans-serif`;
+            title.style.fontWeight = config.heroWeight;
+            title.style.fontSize = `${config.heroSize}rem`;
+            title.style.letterSpacing = `${config.letterSpacing}em`;
+            title.style.lineHeight = config.lineHeight;
+            
+            // Texto gradiente
+            gradient.style.background = `linear-gradient(135deg, ${config.primaryColor} 0%, ${config.secondaryColor} 100%)`;
+            
+            // Texto itálico
+            italic.style.fontFamily = `'${config.italicFont}', serif`;
+            italic.style.fontWeight = config.italicWeight;
+            italic.style.fontSize = `${config.italicSize}em`;
+            italic.style.color = config.italicColor;
+            
+            // Descrição
+            description.style.color = config.textSecondary;
+        }
+
+        // Obter configuração atual
+        function getCurrentConfig() {
+            return {
+                heroFont: document.getElementById('heroFont').value,
+                heroWeight: document.getElementById('heroWeight').value,
+                italicFont: document.getElementById('italicFont').value,
+                italicWeight: document.getElementById('italicWeight').value,
+                italicSize: parseFloat(document.getElementById('italicSize').value),
+                primaryColor: document.getElementById('primaryColor').value,
+                secondaryColor: document.getElementById('secondaryColor').value,
+                textPrimary: document.getElementById('textPrimary').value,
+                textSecondary: document.getElementById('textSecondary').value,
+                italicColor: document.getElementById('italicColor').value,
+                heroSize: parseFloat(document.getElementById('heroSize').value),
+                letterSpacing: parseFloat(document.getElementById('letterSpacing').value),
+                lineHeight: parseFloat(document.getElementById('lineHeight').value)
+            };
+        }
+
+        // Aplicar mudanças na homepage
+        function applyChanges() {
+            const config = getCurrentConfig();
+            
+            // Salvar no localStorage
+            localStorage.setItem('aiscool-config', JSON.stringify(config));
+            
+            // Aplicar na homepage
+            applyToHomepage(config);
+            
+            showStatus('✅ Configurações aplicadas com sucesso!', 'success');
+        }
+
+        // Aplicar configurações na homepage
+        function applyToHomepage(config) {
+            // Criar CSS dinâmico
+            const css = `
+                .hero-title {
+                    font-family: '${config.heroFont}', sans-serif !important;
+                    font-weight: ${config.heroWeight} !important;
+                    font-size: ${config.heroSize}rem !important;
+                    letter-spacing: ${config.letterSpacing}em !important;
+                    line-height: ${config.lineHeight} !important;
+                }
+                
+                .gradient-text {
+                    background: linear-gradient(135deg, ${config.primaryColor} 0%, ${config.secondaryColor} 100%) !important;
+                }
+                
+                .italic-text {
+                    font-family: '${config.italicFont}', serif !important;
+                    font-weight: ${config.italicWeight} !important;
+                    font-size: ${config.italicSize}em !important;
+                    color: ${config.italicColor} !important;
+                }
+                
+                .hero-description {
+                    color: ${config.textSecondary} !important;
+                }
+            `;
+            
+            // Aplicar CSS
+            let styleElement = document.getElementById('dynamic-styles');
+            if (!styleElement) {
+                styleElement = document.createElement('style');
+                styleElement.id = 'dynamic-styles';
+                document.head.appendChild(styleElement);
+            }
+            styleElement.textContent = css;
+        }
+
+        // Resetar para padrão
+        function resetToDefault() {
+            Object.keys(defaultConfig).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.value = defaultConfig[key];
+                }
+            });
+            updatePreview();
+            showStatus('🔄 Configurações resetadas para o padrão', 'success');
+        }
+
+        // Exportar configuração
+        function exportConfig() {
+            const config = getCurrentConfig();
+            const blob = new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'aiscool-config.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            showStatus('📤 Configuração exportada com sucesso!', 'success');
+        }
+
+        // Importar configuração
+        function importConfig() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        try {
+                            const config = JSON.parse(e.target.result);
+                            Object.keys(config).forEach(key => {
+                                const element = document.getElementById(key);
+                                if (element) {
+                                    element.value = config[key];
+                                }
+                            });
+                            updatePreview();
+                            showStatus('📥 Configuração importada com sucesso!', 'success');
+                        } catch (error) {
+                            showStatus('❌ Erro ao importar configuração', 'error');
+                        }
+                    };
+                    reader.readAsText(file);
+                }
+            };
+            input.click();
+        }
+
+        // Mostrar status
+        function showStatus(message, type) {
+            const status = document.getElementById('statusMessage');
+            status.textContent = message;
+            status.className = `status-message status-${type}`;
+            status.style.display = 'block';
+            setTimeout(() => {
+                status.style.display = 'none';
+            }, 3000);
+        }
+
+        // Event listeners para preview em tempo real
+        document.addEventListener('DOMContentLoaded', function() {
+            loadConfig();
+            
+            // Adicionar listeners para todos os controles
+            const controls = document.querySelectorAll('select, input[type="color"], input[type="range"]');
+            controls.forEach(control => {
+                control.addEventListener('input', updatePreview);
+            });
+            
+            // Atualizar valores dos ranges
+            document.getElementById('italicSize').addEventListener('input', function() {
+                document.getElementById('italicSizeValue').textContent = this.value + 'em';
+            });
+            
+            document.getElementById('heroSize').addEventListener('input', function() {
+                document.getElementById('heroSizeValue').textContent = this.value + 'rem';
+            });
+            
+            document.getElementById('letterSpacing').addEventListener('input', function() {
+                document.getElementById('letterSpacingValue').textContent = this.value + 'em';
+            });
+            
+            document.getElementById('lineHeight').addEventListener('input', function() {
+                document.getElementById('lineHeightValue').textContent = this.value;
+            });
+        });
+    </script>
+</body>
+</html>
