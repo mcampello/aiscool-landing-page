@@ -109,9 +109,9 @@ const resultadosContent = {
     
     // Mensagens de score
     mensagensScore: {
-        baixo: "Preparação Necessária",
-        medio: "Pronto para Automação", 
-        alto: "Candidato Ideal"
+        baixo: "Quase lá, falta pouco",
+        medio: "Empresa Pronta para Automação", 
+        alto: "Em Estágio Ideal para Automatizar"
     }
 };
 
