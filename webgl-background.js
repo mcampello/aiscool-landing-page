@@ -48,45 +48,65 @@ function initWebGLBackground() {
         )
     `;
     
-    // Adicionar keyframes mais visíveis
+    // Adicionar keyframes suaves e orgânicos
     const style = document.createElement('style');
     style.textContent = `
         @keyframes glowPulse {
             0% {
                 background: radial-gradient(
                     circle at 50% 30%,
+                    rgba(139, 92, 246, 0.3) 0%,
+                    rgba(139, 92, 246, 0.15) 30%,
+                    rgba(16, 185, 129, 0.1) 60%,
+                    transparent 100%
+                );
+                transform: scale(1) translateY(0px);
+            }
+            25% {
+                background: radial-gradient(
+                    circle at 48% 32%,
                     rgba(139, 92, 246, 0.4) 0%,
                     rgba(139, 92, 246, 0.2) 30%,
                     rgba(16, 185, 129, 0.15) 60%,
                     transparent 100%
                 );
-                transform: scale(1);
+                transform: scale(1.02) translateY(-2px);
             }
             50% {
                 background: radial-gradient(
-                    circle at 50% 30%,
-                    rgba(139, 92, 246, 0.8) 0%,
-                    rgba(139, 92, 246, 0.4) 30%,
-                    rgba(16, 185, 129, 0.3) 60%,
-                    transparent 100%
-                );
-                transform: scale(1.1);
-            }
-            100% {
-                background: radial-gradient(
-                    circle at 50% 30%,
-                    rgba(139, 92, 246, 0.6) 0%,
-                    rgba(139, 92, 246, 0.3) 30%,
+                    circle at 52% 28%,
+                    rgba(139, 92, 246, 0.5) 0%,
+                    rgba(139, 92, 246, 0.25) 30%,
                     rgba(16, 185, 129, 0.2) 60%,
                     transparent 100%
                 );
-                transform: scale(1.05);
+                transform: scale(1.03) translateY(-1px);
+            }
+            75% {
+                background: radial-gradient(
+                    circle at 49% 31%,
+                    rgba(139, 92, 246, 0.4) 0%,
+                    rgba(139, 92, 246, 0.2) 30%,
+                    rgba(16, 185, 129, 0.15) 60%,
+                    transparent 100%
+                );
+                transform: scale(1.01) translateY(-1px);
+            }
+            100% {
+                background: radial-gradient(
+                    circle at 51% 29%,
+                    rgba(139, 92, 246, 0.35) 0%,
+                    rgba(139, 92, 246, 0.18) 30%,
+                    rgba(16, 185, 129, 0.12) 60%,
+                    transparent 100%
+                );
+                transform: scale(1.01) translateY(0px);
             }
         }
     `;
     document.head.appendChild(style);
     
-    finalCanvas.style.animation = 'glowPulse 3s ease-in-out infinite alternate';
+    finalCanvas.style.animation = 'glowPulse 8s ease-in-out infinite';
     
     console.log('✅ Efeito de brilho aplicado com sucesso!');
     console.log('Canvas final:', finalCanvas);
