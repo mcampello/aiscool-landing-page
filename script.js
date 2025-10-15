@@ -362,7 +362,35 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Criar partículas saindo da fonte de luz
+    createFloatingParticles();
 });
+
+// Função para criar partículas flutuantes
+function createFloatingParticles() {
+    const particlesContainer = document.getElementById('particles');
+    if (!particlesContainer) return;
+    
+    const particleCount = 30;
+    
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        // Posição aleatória na parte inferior
+        particle.style.left = (Math.random() * 100) + '%';
+        particle.style.bottom = '0px';
+        
+        // Drift aleatório para movimento lateral
+        const drift = (Math.random() - 0.5) * 100;
+        particle.style.setProperty('--drift', drift + 'px');
+        
+        // Delay aleatório para espalhar as partículas
+        particle.style.animationDelay = Math.random() * 8 + 's';
+        
+        particlesContainer.appendChild(particle);
+    }
+}
 
 
 // Função para rolar até o quiz
