@@ -377,9 +377,9 @@ function createFloatingParticles() {
         const particle = document.createElement('div');
         particle.className = 'particle';
         
-        // Posição aleatória na parte inferior
+        // Posição aleatória na parte inferior, mas um pouco acima
         particle.style.left = (Math.random() * 100) + '%';
-        particle.style.bottom = '0px';
+        particle.style.bottom = '20px';
         
         // Drift aleatório para movimento lateral
         const drift = (Math.random() - 0.5) * 150;
