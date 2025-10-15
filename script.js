@@ -247,6 +247,7 @@ function transformPayload(formData, score) {
 async function sendToWebhook(formData, score) {
     try {
         const payload = transformPayload(formData, score);
+        console.log('📤 Enviando dados para webhook:', payload);
         
         const response = await fetch('https://campello.app.n8n.cloud/webhook/876255b7-2665-4139-85c0-9f0d6502db88', {
             method: 'POST',
@@ -256,13 +257,16 @@ async function sendToWebhook(formData, score) {
             body: JSON.stringify(payload)
         });
         
+        console.log('📡 Resposta do webhook:', response.status, response.statusText);
+        
         if (!response.ok) {
             throw new Error(`Webhook error: ${response.status}`);
         }
         
+        console.log('✅ Dados enviados com sucesso para o webhook');
         return true;
     } catch (error) {
-        console.error('Erro ao enviar lead:', error);
+        console.error('❌ Erro ao enviar lead:', error);
         return false;
     }
 }
@@ -362,45 +366,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Criar partículas saindo da fonte de luz
-    createFloatingParticles();
 });
 
-// Função para criar partículas flutuantes
-function createFloatingParticles() {
-    const particlesContainer = document.getElementById('particles');
-    if (!particlesContainer) return;
-    
-    const particleCount = 20;
-    
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        
-        // Posição concentrada no centro da fonte de luz
-        const centerBias = (Math.random() - 0.5) * 0.4; // -0.2 a 0.2
-        particle.style.left = (50 + centerBias * 100) + '%';
-        particle.style.bottom = '0px';
-        
-        // Drift aleatório para movimento lateral orgânico
-        const drift = (Math.random() - 0.5) * 80;
-        particle.style.setProperty('--drift', drift + 'px');
-        
-        // Delay aleatório para evitar partículas estacionárias
-        const delay = Math.random() * 15 + 3; // 3s a 18s
-        particle.style.animationDelay = delay + 's';
-        
-        // Duração variada para movimento mais natural
-        const duration = Math.random() * 6 + 5; // 5s a 11s
-        particle.style.animationDuration = duration + 's';
-        particle.style.animationTimingFunction = 'ease-in-out';
-        
-        // Inicialmente invisível para evitar partículas estacionárias
-        particle.style.opacity = '0';
-        
-        particlesContainer.appendChild(particle);
-    }
-}
 
 
 // Função para rolar até o quiz
