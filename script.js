@@ -361,9 +361,38 @@ document.addEventListener('DOMContentLoaded', function() {
             e.target.value = value;
         });
     }
+    
+    // Criar partículas animadas
+    createParticles();
 });
 
-
+// Função para criar partículas animadas
+function createParticles() {
+    const particlesContainer = document.getElementById('particles');
+    if (!particlesContainer) return;
+    
+    const particleCount = 50;
+    
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        // Posição aleatória
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        
+        // Tamanho aleatório
+        const size = Math.random() * 4 + 2; // 2px a 6px
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        
+        // Delay aleatório para animação
+        particle.style.animationDelay = Math.random() * 6 + 's';
+        particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+        
+        particlesContainer.appendChild(particle);
+    }
+}
 
 // Função para rolar até o quiz
 function scrollToQuiz() {
