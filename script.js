@@ -391,8 +391,9 @@ function createFloatingParticles() {
         particle.style.animationDelay = delay + 's';
         
         // Duração variada para movimento mais natural
-        const duration = Math.random() * 4 + 6; // 6s a 10s
+        const duration = Math.random() * 6 + 5; // 5s a 11s
         particle.style.animationDuration = duration + 's';
+        particle.style.animationTimingFunction = 'ease-in-out';
         
         // Inicialmente invisível para evitar partículas estacionárias
         particle.style.opacity = '0';
