@@ -1,6 +1,8 @@
 // Estado do quiz
 let currentQuestionIndex = 1;
 const totalQuestions = 15;
+let modalQuestionIndex = 1;
+const modalTotalQuestions = 15;
 
 // Função para rolar até o quiz
 function scrollToQuiz() {
@@ -301,5 +303,127 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('prevBtn').disabled = true;
     document.getElementById('currentQuestion').textContent = currentQuestionIndex;
     document.getElementById('totalQuestions').textContent = totalQuestions;
+    
+    // Inicialização do modal
+    document.getElementById('modalCurrentQuestion').textContent = modalQuestionIndex;
+    document.getElementById('modalTotalQuestions').textContent = modalTotalQuestions;
+});
+
+// Funções do Modal
+function openQuizModal() {
+    const modal = document.getElementById('quizModal');
+    const body = document.body;
+    
+    modal.classList.add('active');
+    body.classList.add('modal-active');
+    
+    // Reset do modal
+    modalQuestionIndex = 1;
+    updateModalProgress();
+    updateModalButtons();
+}
+
+function closeQuizModal() {
+    const modal = document.getElementById('quizModal');
+    const body = document.body;
+    
+    modal.classList.remove('active');
+    body.classList.remove('modal-active');
+    
+    // Reset do modal
+    modalQuestionIndex = 1;
+    updateModalProgress();
+    updateModalButtons();
+}
+
+function changeModalQuestion(direction) {
+    const currentBlock = document.querySelector('#quizModal .question-block.active');
+    
+    // Validar campos obrigatórios antes de avançar
+    if (direction === 1) {
+        const inputs = currentBlock.querySelectorAll('input[required], textarea[required]');
+        let isValid = true;
+        
+        inputs.forEach(input => {
+            if (input.type === 'radio') {
+                const radioGroup = currentBlock.querySelectorAll(`input[name="${input.name}"]`);
+                const isChecked = Array.from(radioGroup).some(radio => radio.checked);
+                if (!isChecked) {
+                    isValid = false;
+                }
+            } else if (input.type === 'text' || input.type === 'email' || input.type === 'tel') {
+                if (!input.value.trim()) {
+                    isValid = false;
+                }
+            }
+        });
+        
+        if (!isValid) {
+            alert('Por favor, preencha todos os campos obrigatórios antes de continuar.');
+            return;
+        }
+    }
+    
+    // Atualizar índice
+    modalQuestionIndex += direction;
+    
+    // Limites
+    if (modalQuestionIndex < 1) modalQuestionIndex = 1;
+    if (modalQuestionIndex > modalTotalQuestions) modalQuestionIndex = modalTotalQuestions;
+    
+    // Atualizar visualização
+    document.querySelectorAll('#quizModal .question-block').forEach(block => {
+        block.classList.remove('active');
+    });
+    
+    const targetBlock = document.querySelector(`#quizModal .question-block[data-question="${modalQuestionIndex}"]`);
+    if (targetBlock) {
+        targetBlock.classList.add('active');
+    }
+    
+    updateModalProgress();
+    updateModalButtons();
+}
+
+function updateModalProgress() {
+    const progress = (modalQuestionIndex / modalTotalQuestions) * 100;
+    document.getElementById('modalProgressBar').style.width = progress + '%';
+    document.getElementById('modalCurrentQuestion').textContent = modalQuestionIndex;
+}
+
+function updateModalButtons() {
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const submitBtn = document.getElementById('submitBtn');
+    
+    prevBtn.disabled = modalQuestionIndex === 1;
+    
+    if (modalQuestionIndex === modalTotalQuestions) {
+        nextBtn.style.display = 'none';
+        submitBtn.style.display = 'inline-block';
+    } else {
+        nextBtn.style.display = 'inline-block';
+        submitBtn.style.display = 'none';
+    }
+}
+
+// Interceptar clique no botão "Começar Agora" para abrir modal
+function scrollToQuiz() {
+    openQuizModal();
+}
+
+// Fechar modal com ESC
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeQuizModal();
+    }
+});
+
+// Fechar modal clicando fora
+document.addEventListener('click', function(e) {
+    const modal = document.getElementById('quizModal');
+    if (e.target === modal) {
+        closeQuizModal();
+    }
 });
 

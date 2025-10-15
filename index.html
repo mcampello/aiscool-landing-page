@@ -375,6 +375,209 @@
         </div>
     </section>
 
+    <!-- Modal de Quiz -->
+    <div class="quiz-modal" id="quizModal">
+        <button class="quiz-modal-close" onclick="closeQuizModal()">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+        <div class="quiz-modal-content">
+            <div class="section-badge">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="8" cy="8" r="3" fill="currentColor"/>
+                </svg>
+                DIAGNÓSTICO PERSONALIZADO
+            </div>
+            <h2 class="section-title">Descubra o Potencial de<br><span class="italic-text">Automação</span> da Sua Empresa</h2>
+            <p class="section-description">Responda 15 perguntas e receba um diagnóstico completo com recomendações personalizadas</p>
+            
+            <div class="quiz-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="modalProgressBar"></div>
+                </div>
+                <p class="progress-text"><span id="modalCurrentQuestion">1</span> de <span id="modalTotalQuestions">15</span></p>
+
+                <form id="modalQuizForm">
+                    <!-- Informações de Contato -->
+                    <div class="question-block active" data-question="1">
+                        <h3>Qual é o seu nome?</h3>
+                        <div class="form-group">
+                            <input type="text" name="nome" required placeholder="Seu nome completo">
+                        </div>
+                    </div>
+
+                    <div class="question-block" data-question="2">
+                        <h3>Qual é o seu email?</h3>
+                        <div class="form-group">
+                            <input type="email" name="email" required placeholder="seu@email.com">
+                        </div>
+                    </div>
+
+                    <div class="question-block" data-question="3">
+                        <h3>Qual é o seu WhatsApp?</h3>
+                        <div class="form-group">
+                            <input type="tel" name="whatsapp" required placeholder="(11) 99999-9999">
+                        </div>
+                    </div>
+
+                    <!-- Melhores Práticas - Questão 1 -->
+                    <div class="question-block" data-question="4">
+                        <h3>Você tem fluxos de trabalho documentados e organizados?</h3>
+                        <div class="radio-group">
+                            <label><input type="radio" name="q1" value="sim" required> Sim</label>
+                            <label><input type="radio" name="q1" value="parcialmente"> Parcialmente</label>
+                            <label><input type="radio" name="q1" value="nao"> Não</label>
+                        </div>
+                    </div>
+
+                    <!-- Melhores Práticas - Questão 2 -->
+                    <div class="question-block" data-question="5">
+                        <h3>Você mede o tempo gasto em tarefas repetitivas?</h3>
+                        <div class="radio-group">
+                            <label><input type="radio" name="q2" value="sim" required> Sim</label>
+                            <label><input type="radio" name="q2" value="parcialmente"> Parcialmente</label>
+                            <label><input type="radio" name="q2" value="nao"> Não</label>
+                        </div>
+                    </div>
+
+                    <!-- Melhores Práticas - Questão 3 -->
+                    <div class="question-block" data-question="6">
+                        <h3>Você tem regras claras para triagem e categorização de informações?</h3>
+                        <div class="radio-group">
+                            <label><input type="radio" name="q3" value="sim" required> Sim</label>
+                            <label><input type="radio" name="q3" value="parcialmente"> Parcialmente</label>
+                            <label><input type="radio" name="q3" value="nao"> Não</label>
+                        </div>
+                    </div>
+
+                    <!-- Melhores Práticas - Questão 4 -->
+                    <div class="question-block" data-question="7">
+                        <h3>Você integra chat/WhatsApp com seus sistemas internos?</h3>
+                        <div class="radio-group">
+                            <label><input type="radio" name="q4" value="sim" required> Sim</label>
+                            <label><input type="radio" name="q4" value="parcialmente"> Parcialmente</label>
+                            <label><input type="radio" name="q4" value="nao"> Não</label>
+                        </div>
+                    </div>
+
+                    <!-- Melhores Práticas - Questão 5 -->
+                    <div class="question-block" data-question="8">
+                        <h3>Você valida manualmente dados antes de processá-los?</h3>
+                        <div class="radio-group">
+                            <label><input type="radio" name="q5" value="sim" required> Sim</label>
+                            <label><input type="radio" name="q5" value="parcialmente"> Parcialmente</label>
+                            <label><input type="radio" name="q5" value="nao"> Não</label>
+                        </div>
+                    </div>
+
+                    <!-- Qualificação - Situação Atual -->
+                    <div class="question-block" data-question="9">
+                        <h3>Como você descreveria a situação atual dos seus processos?</h3>
+                        <div class="radio-group">
+                            <label><input type="radio" name="q6" value="muito_organizados" required> Muito organizados e eficientes</label>
+                            <label><input type="radio" name="q6" value="organizados"> Organizados, mas com espaço para melhorias</label>
+                            <label><input type="radio" name="q6" value="parcialmente_organizados"> Parcialmente organizados</label>
+                            <label><input type="radio" name="q6" value="pouco_organizados"> Pouco organizados</label>
+                            <label><input type="radio" name="q6" value="desorganizados"> Desorganizados</label>
+                        </div>
+                    </div>
+
+                    <!-- Qualificação - Resultado Desejado -->
+                    <div class="question-block" data-question="10">
+                        <h3>Qual resultado você gostaria de ver em 90 dias?</h3>
+                        <div class="radio-group">
+                            <label><input type="radio" name="q7" value="automatizar_tarefas" required> Automatizar tarefas repetitivas</label>
+                            <label><input type="radio" name="q7" value="melhorar_eficiencia"> Melhorar eficiência geral</label>
+                            <label><input type="radio" name="q7" value="reduzir_erros"> Reduzir erros manuais</label>
+                            <label><input type="radio" name="q7" value="economizar_tempo"> Economizar tempo da equipe</label>
+                            <label><input type="radio" name="q7" value="melhorar_atendimento"> Melhorar atendimento ao cliente</label>
+                        </div>
+                    </div>
+
+                    <!-- Qualificação - Obstáculo Principal -->
+                    <div class="question-block" data-question="11">
+                        <h3>Qual é o maior obstáculo para implementar automação na sua empresa?</h3>
+                        <div class="radio-group">
+                            <label><input type="radio" name="q8" value="falta_tempo" required> Falta de tempo para implementar</label>
+                            <label><input type="radio" name="q8" value="falta_conhecimento"> Falta de conhecimento técnico</label>
+                            <label><input type="radio" name="q8" value="custo_alto"> Custo alto de implementação</label>
+                            <label><input type="radio" name="q8" value="resistencia_mudanca"> Resistência à mudança</label>
+                            <label><input type="radio" name="q8" value="nao_sabe_por_onde"> Não sabe por onde começar</label>
+                        </div>
+                    </div>
+
+                    <!-- Qualificação - Tipo de Solução -->
+                    <div class="question-block" data-question="12">
+                        <h3>Que tipo de solução você prefere?</h3>
+                        <div class="radio-group">
+                            <label><input type="radio" name="q9" value="consultoria" required> Apenas consultoria e orientação</label>
+                            <label><input type="radio" name="q9" value="consultoria_implementacao"> Consultoria + implementação parcial</label>
+                            <label><input type="radio" name="q9" value="implementacao_completa"> Implementação completa</label>
+                        </div>
+                    </div>
+
+                    <!-- Qualificação - Algo Mais -->
+                    <div class="question-block" data-question="13">
+                        <h3>Existe algo mais que você acha que precisamos saber?</h3>
+                        <div class="form-group">
+                            <textarea name="q10" rows="4" placeholder="Compartilhe qualquer informação adicional que considere relevante..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Melhores Práticas Adicionais - Questão 6 -->
+                    <div class="question-block" data-question="14">
+                        <h3>Sua empresa possui uma base de conhecimento centralizada e atualizada?</h3>
+                        <div class="radio-group">
+                            <label><input type="radio" name="q11" value="sim" required> Sim</label>
+                            <label><input type="radio" name="q11" value="parcialmente"> Parcialmente</label>
+                            <label><input type="radio" name="q11" value="nao"> Não</label>
+                        </div>
+                    </div>
+
+                    <!-- Melhores Práticas Adicionais - Questão 7 -->
+                    <div class="question-block" data-question="15">
+                        <h3>Quantas ferramentas diferentes sua equipe usa diariamente?</h3>
+                        <div class="radio-group">
+                            <label><input type="radio" name="q12" value="1_3" required> 1-3 ferramentas</label>
+                            <label><input type="radio" name="q12" value="4_6"> 4-6 ferramentas</label>
+                            <label><input type="radio" name="q12" value="7_10"> 7-10 ferramentas</label>
+                            <label><input type="radio" name="q12" value="mais_10"> Mais de 10 ferramentas</label>
+                        </div>
+                    </div>
+
+                    <!-- Melhores Práticas Adicionais - Questão 8 -->
+                    <div class="question-block" data-question="16">
+                        <h3>Você acompanha métricas de performance dos seus processos?</h3>
+                        <div class="radio-group">
+                            <label><input type="radio" name="q13" value="sim" required> Sim, regularmente</label>
+                            <label><input type="radio" name="q13" value="parcialmente"> Parcialmente</label>
+                            <label><input type="radio" name="q13" value="nao"> Não</label>
+                        </div>
+                    </div>
+
+                    <!-- Melhores Práticas Adicionais - Questão 9 -->
+                    <div class="question-block" data-question="17">
+                        <h3>Qual o tamanho da sua equipe?</h3>
+                        <div class="radio-group">
+                            <label><input type="radio" name="q14" value="1_5" required> 1-5 pessoas</label>
+                            <label><input type="radio" name="q14" value="6_15"> 6-15 pessoas</label>
+                            <label><input type="radio" name="q14" value="16_50"> 16-50 pessoas</label>
+                            <label><input type="radio" name="q14" value="mais_50"> Mais de 50 pessoas</label>
+                        </div>
+                    </div>
+
+                    <div class="quiz-navigation">
+                        <button type="button" onclick="changeModalQuestion(-1)" id="prevBtn" disabled>Anterior</button>
+                        <button type="button" onclick="changeModalQuestion(1)" id="nextBtn">Próxima</button>
+                        <button type="submit" id="submitBtn" style="display: none;">Finalizar Diagnóstico</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- Results Section (Hidden by default) -->
     <section class="results-section" id="results" style="display: none;">
         <div class="container">
