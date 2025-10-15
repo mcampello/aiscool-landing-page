@@ -371,28 +371,31 @@ function createFloatingParticles() {
     const particlesContainer = document.getElementById('particles');
     if (!particlesContainer) return;
     
-    const particleCount = 25;
+    const particleCount = 20;
     
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
         
-        // Posição aleatória na parte inferior, concentrada no centro
-        const centerBias = (Math.random() - 0.5) * 0.6; // -0.3 a 0.3
+        // Posição concentrada no centro da fonte de luz
+        const centerBias = (Math.random() - 0.5) * 0.4; // -0.2 a 0.2
         particle.style.left = (50 + centerBias * 100) + '%';
         particle.style.bottom = '0px';
         
         // Drift aleatório para movimento lateral orgânico
-        const drift = (Math.random() - 0.5) * 120;
+        const drift = (Math.random() - 0.5) * 80;
         particle.style.setProperty('--drift', drift + 'px');
         
-        // Delay aleatório para movimento orgânico
-        const delay = Math.random() * 12 + 1; // 1s a 13s
+        // Delay aleatório para evitar partículas estacionárias
+        const delay = Math.random() * 15 + 3; // 3s a 18s
         particle.style.animationDelay = delay + 's';
         
         // Duração variada para movimento mais natural
-        const duration = Math.random() * 3 + 7; // 7s a 10s
+        const duration = Math.random() * 4 + 6; // 6s a 10s
         particle.style.animationDuration = duration + 's';
+        
+        // Inicialmente invisível para evitar partículas estacionárias
+        particle.style.opacity = '0';
         
         particlesContainer.appendChild(particle);
     }
