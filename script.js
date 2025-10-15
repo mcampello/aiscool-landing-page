@@ -307,13 +307,39 @@ document.addEventListener('DOMContentLoaded', function() {
     // Inicialização do modal
     document.getElementById('modalCurrentQuestion').textContent = modalQuestionIndex;
     document.getElementById('modalTotalQuestions').textContent = modalTotalQuestions;
+    
+    // Event listeners para abrir modal quando clicar nos campos de nome/email
+    const nomeField = document.querySelector('input[name="nome"]');
+    const emailField = document.querySelector('input[name="email"]');
+    
+    if (nomeField) {
+        nomeField.addEventListener('focus', function() {
+            console.log('Campo nome focado, abrindo modal...');
+            openQuizModal();
+        });
+    }
+    
+    if (emailField) {
+        emailField.addEventListener('focus', function() {
+            console.log('Campo email focado, abrindo modal...');
+            openQuizModal();
+        });
+    }
 });
 
 // Funções do Modal
 function openQuizModal() {
+    console.log('Tentando abrir modal...');
     const modal = document.getElementById('quizModal');
     const body = document.body;
     
+    if (!modal) {
+        console.error('Modal não encontrado!');
+        return;
+    }
+    
+    console.log('Modal encontrado, abrindo...');
+    modal.style.display = 'flex';
     modal.classList.add('active');
     body.classList.add('modal-active');
     
@@ -327,6 +353,7 @@ function closeQuizModal() {
     const modal = document.getElementById('quizModal');
     const body = document.body;
     
+    modal.style.display = 'none';
     modal.classList.remove('active');
     body.classList.remove('modal-active');
     
@@ -409,6 +436,11 @@ function updateModalButtons() {
 
 // Interceptar clique no botão "Começar Agora" para abrir modal
 function scrollToQuiz() {
+    document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Função específica para abrir modal
+function startQuiz() {
     openQuizModal();
 }
 
